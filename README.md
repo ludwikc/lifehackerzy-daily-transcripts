@@ -46,6 +46,35 @@ DISCORD_FORUM_CHANNEL_ID=... \
 ./daily_manual.sh
 ```
 
+## Testowanie promptów (`daily_testing.sh`)
+
+Skrypt `daily_testing.sh` służy do testowania różnych promptów na tym samym pipeline (pobranie audio -> transkrypcja -> podsumowanie), ale:
+- nie publikuje nic na Discordzie,
+- wyświetla podsumowanie bezpośrednio w terminalu,
+- zapisuje wynik do `~/craig-on-mikrus/summaries/`.
+
+### 1) Ustaw własny klucz OpenAI do testów
+
+```bash
+export OPENAI_API_KEY_TESTING="twoj_wlasny_klucz_openai"
+```
+
+### 2) Uruchom skrypt testowy
+
+```bash
+chmod +x daily_testing.sh
+./daily_testing.sh --prompt daily_summary_default.md
+```
+
+`--prompt` wskazuje nazwę pliku z katalogu `prompts/` (np. `prompts/daily_summary_default.md`).
+Możesz też podać pełną ścieżkę do pliku `.md`.
+
+Przykład z pełną ścieżką:
+
+```bash
+./daily_testing.sh --prompt /Users/ludwikc/git/lifehackerzy-daily-transcripts/prompts/daily_summary_default.md
+```
+
 ## Co powstaje lokalnie
 
 W `LOCAL_DIR` (domyślnie `~/craig-on-mikrus`):
